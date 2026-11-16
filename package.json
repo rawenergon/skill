@@ -4,8 +4,8 @@
   "description": "Universal AI Agent Skills Collection & CLI - 46+ Production-Ready Skills for Antigravity, Claude Code, Cursor, Codex, and Swarms",
   "main": "index.js",
   "bin": {
-    "skills": "./bin/cli.js",
-    "agent-skills": "./bin/cli.js"
+    "skills": "bin/cli.js",
+    "agent-skills": "bin/cli.js"
   },
   "files": [
     "bin",
@@ -39,7 +39,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rawenergon/skill.git"
+    "url": "git+https://github.com/rawenergon/skill.git"
   },
   "publishConfig": {
     "access": "public"
