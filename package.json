@@ -1,27 +1,47 @@
 {
-  "name": "agent-skills",
+  "name": "@rawenergon/skills",
   "version": "1.0.0",
-  "description": "Universal AI Agent Skills Collection - 45+ Production-Ready Skills for Autonomous Agents",
+  "description": "Universal AI Agent Skills Collection & CLI - 46+ Production-Ready Skills for Antigravity, Claude Code, Cursor, Codex, and Swarms",
   "main": "index.js",
+  "bin": {
+    "skills": "./bin/cli.js",
+    "agent-skills": "./bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "skills.json",
+    "index.js",
+    "skills",
+    "install.sh",
+    "install.ps1",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "list": "node -e \"console.log(require('fs').readdirSync('skills'))\""
+    "start": "node bin/cli.js",
+    "list": "node bin/cli.js list"
   },
   "keywords": [
     "ai",
     "agent",
     "skills",
+    "agent-skills",
     "antigravity",
-    "gemini",
     "claude-code",
     "cursor",
     "codex",
+    "swarms",
+    "reverse-engineering",
     "motion",
-    "reverse-engineering"
+    "stickers"
   ],
   "author": "Aditya Raj (@rawenergon)",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/rawenergon/skill.git"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

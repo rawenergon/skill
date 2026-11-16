@@ -1,16 +1,47 @@
-# 🧠 Universal Agent Skills (`skill`)
+# 🧠 Universal Agent Skills (`@rawenergon/skills`)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
-[![Skills Count](https://img.shields.io/badge/Skills-45%20Curated-ff6a00.svg)](#-skills-catalog)
+[![Skills Count](https://img.shields.io/badge/Skills-46%20Curated-ff6a00.svg)](#-skills-catalog)
+[![NPM](https://img.shields.io/badge/NPM-%40rawenergon%2Fskills-cb3837.svg)](https://www.npmjs.com/package/@rawenergon/skills)
+[![Web Showcase](https://img.shields.io/badge/Web-Live%20Directory-00f0ff.svg)](https://rawenergon.github.io/skill/)
 [![Agent Support](https://img.shields.io/badge/Agents-Antigravity%20%7C%20Gemini%20%7C%20Claude%20%7C%20Cursor%20%7C%20Codex-emerald.svg)](#-how-to-use-inside-your-repo)
 
-A production-grade, open-source library of **45 specialized AI agent skills** for engineering, motion design, reverse engineering, multi-agent swarms, code auditing, and architecture workflows.
+A production-grade, open-source library and CLI of **46 specialized AI agent skills** for engineering, motion design, reverse engineering, multi-agent swarms, code auditing, and architecture workflows.
 
-Each skill is self-contained with its instruction manifest (`SKILL.md`), reference recipes, configuration schemas, and executable scripts ready to drop into any repository or agent workspace.
+🌐 **Interactive Web Directory:** [https://rawenergon.github.io/skill/](https://rawenergon.github.io/skill/)
 
 ---
 
-## ⚡ How to Use Inside Your Repo
+## ⚡ Quickstart via NPM (Global or NPX)
+
+Run anywhere without cloning the repository:
+
+```bash
+# 1. Search or list all 46 skills
+npx @rawenergon/skills list
+
+# 2. Add a skill to your current repository (.gemini/skills or .agents/skills)
+npx @rawenergon/skills add sticker-craft
+npx @rawenergon/skills add reverse-engineer-anything
+npx @rawenergon/skills add impeccable
+
+# 3. Or install all 46 skills at once
+npx @rawenergon/skills add all
+
+# 4. Open the interactive web directory
+npx @rawenergon/skills web
+```
+
+To install globally:
+```bash
+npm install -g @rawenergon/skills
+skills list
+skills add sticker-craft
+```
+
+---
+
+## 📦 How to Use Inside Your Repo
 
 You can install all skills or cherry-pick specific ones into your project's agent directory.
 
@@ -21,7 +52,7 @@ Agents automatically discover and load skills placed in:
 
 ---
 
-### Method 1: Install with One-Liner (Fastest)
+### Method 1: Install with Shell / PowerShell One-Liner
 
 #### Install All Skills into Your Project:
 ```bash
