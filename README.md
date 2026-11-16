@@ -84,6 +84,7 @@ rm -rf temp-skills
 | **`prototype`** | Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live an... | [Manifest](skills/prototype/SKILL.md) |
 | **`remove-animations`** | Find the animations an interface doesn't need and remove them — motion on keyboard actions, high-frequency surfaces, functional data, and de... | [Manifest](skills/remove-animations/SKILL.md) |
 | **`review-animations`** | Reviews animation and motion code against a high craft bar derived from Emil Kowalski's design engineering philosophy. Default to flagging; ... | [Manifest](skills/review-animations/SKILL.md) |
+| **`sticker-craft`** | Design, construct, vectorize, and animate interactive 3D peelable vinyl stickers, die-cut decals, and SVG components with physics-based peel... | [Manifest](skills/sticker-craft/SKILL.md) |
 
 ---
 
