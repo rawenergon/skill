@@ -1,0 +1,27 @@
+{
+  "name": "agent-skills",
+  "version": "1.0.0",
+  "description": "Universal AI Agent Skills Collection - 45+ Production-Ready Skills for Autonomous Agents",
+  "main": "index.js",
+  "scripts": {
+    "list": "node -e \"console.log(require('fs').readdirSync('skills'))\""
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "skills",
+    "antigravity",
+    "gemini",
+    "claude-code",
+    "cursor",
+    "codex",
+    "motion",
+    "reverse-engineering"
+  ],
+  "author": "Aditya Raj (@rawenergon)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rawenergon/skill.git"
+  }
+}
