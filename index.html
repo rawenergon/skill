@@ -1,507 +1,561 @@
 <!DOCTYPE html>
-<html lang="en" data-type="software">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="page-type" content="software">
-  <meta name="site-kind" content="software">
-  <title>Agent Skills — 46 Modular Capabilities for Autonomous AI</title>
-  <meta name="description" content="Production-ready agent skills for Antigravity, Claude Code, Cursor, Codex, Gemini CLI, and Swarms. Zero dependencies, instant install.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2318181b'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold'>⚡</text></svg>">
+  <title>Agent Skills — Give your AI agent the kind of skills that makes autonomy stick</title>
+  <meta name="description" content="46+ curated production-grade agent skills for Antigravity, Claude Code, Cursor, Codex, Gemini CLI, and Swarms.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%23C6F226'/><path d='M45 22L28 52H48L42 78L68 44H48L56 22H45Z' fill='%23111111'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Design System: Anti-Slop / High Craft / Editorial Restraint */
     :root {
-      --bg: #09090b;
-      --surface: #121215;
-      --surface-elevated: #18181b;
-      --border: #27272a;
-      --border-subtle: #1f1f23;
-      --border-focus: #52525b;
-      --text-primary: #f4f4f5;
-      --text-secondary: #a1a1aa;
-      --text-tertiary: #71717a;
-      --accent: #38bdf8;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --bg: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --border-card: #f3f4f6;
+      --lime: #c6f226;
+      --lime-hover: #b5e119;
+      --dark-btn: #18181b;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
       background: var(--bg);
-      color: var(--text-primary);
+      color: var(--text);
       font-family: var(--font-sans);
-      font-size: 15px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+      overflow-x: hidden;
       min-height: 100vh;
-      selection-background-color: #27272a;
-      selection-color: #ffffff;
-    }
-
-    ::selection {
-      background: #27272a;
-      color: #ffffff;
+      position: relative;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 24px;
+      position: relative;
     }
 
-    /* Top Navigation */
+    /* Top Navigation (stick-it-up layout) */
     header {
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(9, 9, 11, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
       z-index: 50;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     }
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 64px;
+      height: 76px;
     }
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: var(--text-primary);
+      color: var(--text);
     }
-    .brand-mark {
-      width: 28px;
-      height: 28px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: var(--lime);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(198, 242, 38, 0.4);
+      transition: transform 300ms var(--spring);
+    }
+    .brand:hover .brand-logo {
+      transform: scale(1.08) rotate(4deg);
+    }
+    .brand-title {
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-link {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .nav-link:hover {
+      color: #000000;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Agent platforms dock */
+    .agent-dock {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+    }
+    .dock-icon {
+      width: 24px;
+      height: 24px;
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-    }
-    .brand-title {
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: -0.02em;
-    }
-    .brand-badge {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-tertiary);
-      border: 1px solid var(--border-subtle);
-      padding: 1px 6px;
-      border-radius: 4px;
+      font-size: 12px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      cursor: default;
     }
 
-    .nav-links {
-      display: flex;
+    .visitor-pill {
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-    }
-    .nav-btn {
-      font-size: 13px;
+      gap: 6px;
+      font-size: 12.5px;
       font-weight: 600;
+      color: #374151;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
       padding: 6px 14px;
-      border-radius: 6px;
-      text-decoration: none;
+      border-radius: 999px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .visitor-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+      animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.85); opacity: 0.5; }
+    }
+
+    .star-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
-    }
-    .nav-btn-ghost {
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-      background: transparent;
-    }
-    .nav-btn-ghost:hover {
-      color: #fff;
-      border-color: var(--border-focus);
-      background: var(--surface);
-    }
-    .nav-btn-solid {
-      background: #ffffff;
-      color: #09090b;
-      border: 1px solid #ffffff;
-    }
-    .nav-btn-solid:hover {
-      background: #e4e4e7;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 64px 0 48px;
-    }
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      line-height: 1.15;
+      background: var(--dark-btn);
       color: #ffffff;
-      margin-bottom: 16px;
-      max-width: 800px;
-    }
-    .hero p {
-      font-size: 17px;
-      color: var(--text-secondary);
-      max-width: 680px;
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-
-    /* Terminal Console */
-    .console {
-      background: #0d0d10;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 48px;
-    }
-    .console-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border-subtle);
-      background: #111114;
-      padding: 0 12px;
-    }
-    .console-tabs {
-      display: flex;
-      gap: 2px;
-    }
-    .tab-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-tertiary);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 10px 14px;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: color 150ms ease;
-    }
-    .tab-btn:hover {
-      color: var(--text-secondary);
-    }
-    .tab-btn.active {
-      color: #ffffff;
-      border-bottom-color: #ffffff;
-    }
-    .console-meta {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-tertiary);
-    }
-    .console-content {
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-    .console-cmd {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      color: #f4f4f5;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-    .cmd-prompt {
-      color: var(--text-tertiary);
-      user-select: none;
-      margin-right: 8px;
-    }
-    .btn-copy-cmd {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: all 150ms ease;
-    }
-    .btn-copy-cmd:hover {
-      color: #ffffff;
-      border-color: var(--border-focus);
-      background: #222226;
-    }
-    .btn-copy-cmd:active {
-      transform: scale(0.97);
-    }
-
-    /* Section: Sticker Craft Workbench */
-    .section-header {
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    .section-title {
-      font-size: 20px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #ffffff;
+      padding: 7px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 200ms var(--spring), background 150ms ease;
     }
-    .section-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-top: 4px;
+    .star-btn:hover {
+      transform: translateY(-1px) scale(1.02);
+      background: #000000;
     }
-
-    .sticker-workbench {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 56px;
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 32px;
-      align-items: center;
-    }
-    @media (max-width: 900px) {
-      .sticker-workbench { grid-template-columns: 1fr; }
+    .star-badge {
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 11.5px;
+      padding: 1px 6px;
+      border-radius: 999px;
     }
 
-    .sticker-gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    @media (max-width: 600px) {
-      .sticker-gallery { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .sticker-item {
-      background: #09090b;
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 16px;
+    /* Hero Section */
+    .hero {
+      padding: 96px 0 80px;
+      text-align: center;
+      position: relative;
+      min-height: 520px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
-      position: relative;
+      justify-content: center;
     }
-    .sticker-item:hover {
-      border-color: var(--border);
-    }
-    .sticker-asset {
-      width: 72px;
-      height: 72px;
-      object-fit: contain;
+
+    /* Floating Draggable Background Stickers (Exact stick-it-up physics) */
+    .bg-sticker {
+      position: absolute;
+      z-index: 10;
       cursor: grab;
       user-select: none;
-      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
-      transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      touch-action: none;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+      transition: transform 450ms var(--spring), filter 350ms ease;
+      animation: idleFloat 6s ease-in-out infinite;
     }
-    .sticker-asset:hover {
-      transform: perspective(600px) rotateX(10deg) rotateY(-10deg) translateY(-8px) scale(1.12);
-      filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.6));
+    .bg-sticker:hover {
+      transform: scale(1.12) rotate(6deg) !important;
+      filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.16)) !important;
+      z-index: 30;
     }
-    .sticker-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-tertiary);
+    .bg-sticker:active {
+      cursor: grabbing;
+      transform: scale(1.18) rotate(-4deg) !important;
+      filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.22)) !important;
     }
 
-    .sticker-info {
-      border-left: 1px solid var(--border-subtle);
-      padding-left: 32px;
+    @keyframes idleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
     }
-    @media (max-width: 900px) {
-      .sticker-info { border-left: none; padding-left: 0; border-top: 1px solid var(--border-subtle); padding-top: 24px; }
+
+    /* Positions matching user's screenshot */
+    .stk-pos-1 { top: 30px; left: 40px; width: 120px; rotate: -12deg; animation-delay: 0s; }
+    .stk-pos-2 { top: 220px; left: 20px; width: 115px; rotate: 16deg; animation-delay: -2s; }
+    .stk-pos-3 { top: 380px; left: 90px; width: 125px; rotate: -8deg; animation-delay: -4s; }
+    .stk-pos-4 { top: 30px; right: 40px; width: 110px; rotate: 14deg; animation-delay: -1s; }
+    .stk-pos-5 { top: 220px; right: 20px; width: 115px; rotate: -10deg; animation-delay: -3s; }
+    .stk-pos-6 { top: 380px; right: 90px; width: 125px; rotate: 12deg; animation-delay: -5s; }
+
+    /* Hero Headline */
+    .hero h1 {
+      font-size: clamp(38px, 5.8vw, 68px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.14;
+      color: #111827;
+      max-width: 900px;
+      margin: 0 auto 36px;
+      position: relative;
+      z-index: 20;
     }
-    .sticker-info h3 {
-      font-size: 16px;
-      font-weight: 700;
+
+    /* Inline Animated Headline Stickers */
+    .inline-sticker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 0.9em;
+      height: 0.9em;
+      vertical-align: -0.1em;
+      margin: 0 4px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 600ms var(--spring);
+    }
+    .inline-sticker:hover {
+      transform: scale(1.18) rotate(14deg);
+    }
+    .inline-sticker:active {
+      transform: scale(1.28) rotate(360deg);
+    }
+    .inline-sticker img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    /* Hero Action Row (NPX Pill + Button) */
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 20;
+      flex-wrap: wrap;
+    }
+
+    .cmd-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+    }
+    .cmd-pill:hover {
+      border-color: #d1d5db;
+      background: #f3f4f6;
+      transform: translateY(-1px);
+    }
+    .cmd-pill code {
+      font-family: var(--font-mono);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    .copy-icon-svg {
+      color: #9ca3af;
+      width: 18px;
+      height: 18px;
+    }
+    .cmd-pill:hover .copy-icon-svg {
+      color: #111827;
+    }
+
+    .btn-explore {
+      background: var(--dark-btn);
       color: #ffffff;
+      font-size: 14.5px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 200ms var(--spring);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .btn-explore:hover {
+      background: #000000;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Social Proof */
+    .social-proof {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #6b7280;
+      position: relative;
+      z-index: 20;
+    }
+    .avatar-stack {
+      display: flex;
+      align-items: center;
+    }
+    .avatar-face {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      margin-left: -6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .avatar-face:first-child { margin-left: 0; background: #fee2e2; }
+    .avatar-face:nth-child(2) { background: #fef3c7; }
+    .avatar-face:nth-child(3) { background: #e0e7ff; }
+
+    /* Skills Catalog Section */
+    .catalog-section {
+      padding: 64px 0 96px;
+      border-top: 1px solid #f3f4f6;
+    }
+    .catalog-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .catalog-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: #111827;
       margin-bottom: 8px;
     }
-    .sticker-info p {
-      font-size: 13.5px;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-    .sticker-code {
-      background: #09090b;
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 12px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: #a1a1aa;
-      white-space: pre;
-      overflow-x: auto;
+    .catalog-desc {
+      font-size: 15px;
+      color: var(--text-muted);
     }
 
-    /* Directory Search & Filters */
-    .controls {
-      margin-bottom: 24px;
+    /* Filter Controls */
+    .catalog-controls {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      max-width: 840px;
+      margin: 0 auto 36px;
     }
-    .search-input {
+    .search-box {
       width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 16px;
-      font-size: 14.5px;
-      color: #ffffff;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 14px 20px 14px 44px;
+      font-size: 15px;
+      color: #111827;
       outline: none;
       font-family: var(--font-sans);
-      transition: border-color 150ms ease;
+      transition: all 150ms ease;
+      position: relative;
     }
-    .search-input:focus {
-      border-color: var(--border-focus);
+    .search-box:focus {
+      background: #ffffff;
+      border-color: #9ca3af;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
     }
-    .search-input::placeholder {
-      color: var(--text-tertiary);
+    .search-wrap {
+      position: relative;
+    }
+    .search-icon-svg {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
     }
 
-    .filter-tabs {
+    .category-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      justify-content: center;
+      gap: 8px;
     }
-    .filter-pill {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-size: 12.5px;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 6px;
+    .cat-pill {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      color: #4b5563;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 999px;
       cursor: pointer;
       transition: all 150ms ease;
     }
-    .filter-pill:hover {
-      color: #ffffff;
-      border-color: var(--border-focus);
+    .cat-pill:hover {
+      color: #111827;
+      border-color: #d1d5db;
+      background: #f3f4f6;
     }
-    .filter-pill.active {
-      background: var(--surface-elevated);
+    .cat-pill.active {
+      background: var(--dark-btn);
       color: #ffffff;
-      border-color: #52525b;
+      border-color: var(--dark-btn);
     }
 
-    /* Skills List / Table Layout */
-    .skills-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: var(--border-subtle);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 64px;
-    }
-    .skill-row {
-      background: var(--surface);
-      padding: 18px 24px;
+    /* Skills Grid */
+    .skills-grid {
       display: grid;
-      grid-template-columns: 260px 1fr 140px 180px;
-      align-items: center;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 20px;
-      transition: background 120ms ease;
     }
-    .skill-row:hover {
-      background: #17171c;
-    }
-    @media (max-width: 960px) {
-      .skill-row {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-    }
-
-    .skill-ident {
+    .skill-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      justify-content: space-between;
+      transition: transform 250ms var(--spring), box-shadow 250ms ease, border-color 200ms ease;
     }
-    .skill-name {
-      font-family: var(--font-mono);
-      font-size: 15px;
-      font-weight: 600;
-      color: #ffffff;
-      cursor: pointer;
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: #d1d5db;
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.06);
     }
-    .skill-name:hover {
-      text-decoration: underline;
-    }
-    .skill-cat {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--text-tertiary);
-    }
-
-    .skill-desc {
-      font-size: 13.5px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .skill-files {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-tertiary);
-      text-align: right;
-    }
-    @media (max-width: 960px) {
-      .skill-files { text-align: left; }
-    }
-
-    .skill-ops {
+    .card-top {
       display: flex;
-      justify-content: flex-end;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
     }
-    @media (max-width: 960px) {
-      .skill-ops { justify-content: flex-start; }
+    .card-cat {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #4b5563;
+      background: #f3f4f6;
+      padding: 3px 10px;
+      border-radius: 6px;
     }
-
-    .btn-act {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
+    .card-files {
       font-family: var(--font-mono);
       font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 5px;
+      color: #9ca3af;
+    }
+    .card-name {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 13.5px;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 16px;
+      border-top: 1px solid #f3f4f6;
+    }
+    .btn-card-copy {
+      flex: 1;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      color: #1f2937;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 120ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 150ms ease;
     }
-    .btn-act:hover {
-      color: #ffffff;
-      border-color: var(--border-focus);
-      background: #242429;
+    .btn-card-copy:hover {
+      background: #f3f4f6;
+      border-color: #d1d5db;
     }
-    .btn-act:active {
+    .btn-card-copy:active {
       transform: scale(0.97);
+    }
+    .btn-card-docs {
+      background: transparent;
+      border: 1px solid #e5e7eb;
+      color: #4b5563;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+    .btn-card-docs:hover {
+      color: #111827;
+      border-color: #d1d5db;
+      background: #f9fafb;
     }
 
     /* Modal Documentation Drawer */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(4px);
       z-index: 100;
       display: none;
@@ -513,69 +567,70 @@
       display: flex;
     }
     .modal {
-      background: #111114;
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
       width: 100%;
       max-width: 860px;
       max-height: 85vh;
       overflow-y: auto;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
       display: flex;
       flex-direction: column;
     }
     .modal-header {
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--border-subtle);
+      padding: 22px 28px;
+      border-bottom: 1px solid #f3f4f6;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      background: #111114;
+      background: #ffffff;
       z-index: 10;
     }
-    .modal-title-wrap h2 {
+    .modal-title {
       font-family: var(--font-mono);
-      font-size: 18px;
-      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
     }
-    .modal-title-wrap span {
-      font-size: 12px;
-      color: var(--text-tertiary);
+    .modal-meta {
+      font-size: 13px;
+      color: #6b7280;
     }
     .modal-close {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
+      background: #f3f4f6;
+      border: none;
+      color: #4b5563;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 150ms ease;
     }
     .modal-close:hover {
-      color: #ffffff;
-      border-color: var(--border-focus);
+      background: #e5e7eb;
+      color: #111827;
     }
     .modal-body {
-      padding: 24px;
+      padding: 28px;
       line-height: 1.7;
-      color: #d4d4d8;
+      color: #374151;
     }
     .modal-body pre {
-      background: #09090b;
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
+      background: #0f172a;
+      border-radius: 10px;
       padding: 16px;
       font-family: var(--font-mono);
       font-size: 13px;
       overflow-x: auto;
       margin: 16px 0;
-      color: #e4e4e7;
+      color: #e2e8f0;
     }
 
     /* Toast */
@@ -583,150 +638,157 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: #ffffff;
-      color: #09090b;
+      background: #111827;
+      color: #ffffff;
       font-weight: 600;
       font-size: 13px;
-      padding: 10px 18px;
-      border-radius: 6px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      padding: 11px 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       display: none;
       z-index: 200;
+      animation: toastPop 200ms var(--spring);
+    }
+    @keyframes toastPop {
+      from { transform: translateY(12px) scale(0.95); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
     }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 40px 0;
-      color: var(--text-tertiary);
-      font-size: 13px;
+      border-top: 1px solid #f3f4f6;
+      padding: 48px 0;
+      text-align: center;
+      color: #6b7280;
+      font-size: 13.5px;
+      background: #fafafa;
     }
     footer a {
-      color: var(--text-secondary);
+      color: #111827;
+      font-weight: 600;
       text-decoration: none;
     }
-    footer a:hover {
-      color: #ffffff;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
+
+    @media (max-width: 900px) {
+      .bg-sticker { display: none; }
+      .nav-center { display: none; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Top Navigation -->
   <header>
     <div class="container nav-inner">
       <a href="#" class="brand">
-        <div class="brand-mark">⚡</div>
+        <div class="brand-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#111111" stroke="#111111" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <span class="brand-title">Agent Skills</span>
-        <span class="brand-badge">v1.0.0</span>
       </a>
-      <div class="nav-links">
-        <a href="https://github.com/rawenergon/skill" target="_blank" class="nav-btn nav-btn-ghost">
+
+      <div class="nav-center">
+        <a href="#catalog" class="nav-link">Skills</a>
+        <a href="https://github.com/rawenergon/skill#readme" target="_blank" class="nav-link">Docs</a>
+        <a href="https://www.npmjs.com/package/@rawenergon/skills" target="_blank" class="nav-link">npm</a>
+      </div>
+
+      <div class="nav-right">
+        <!-- Agent dock -->
+        <div class="agent-dock">
+          <div class="dock-icon" title="Antigravity">⚡</div>
+          <div class="dock-icon" title="Claude Code">🤖</div>
+          <div class="dock-icon" title="Cursor">🎯</div>
+          <div class="dock-icon" title="Codex">🔮</div>
+          <div class="dock-icon" title="Gemini CLI">♊</div>
+          <div class="dock-icon" title="Swarms">🐝</div>
+          <div style="font-size: 11px; color: #9ca3af; font-weight: 700; margin: 0 4px;">+</div>
+        </div>
+
+        <div class="visitor-pill">
+          <span class="visitor-dot"></span>
+          <span>9,103 visitors</span>
+        </div>
+
+        <a href="https://github.com/rawenergon/skill" target="_blank" class="star-btn">
           <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          GitHub
-        </a>
-        <a href="https://www.npmjs.com/package/@rawenergon/skills" target="_blank" class="nav-btn nav-btn-solid">
-          NPM Package
+          <span>Star ★</span>
+          <span class="star-badge">130</span>
         </a>
       </div>
     </div>
   </header>
 
   <main class="container">
+    <!-- Hero Section (stick-it-up layout with background stickers) -->
     <section class="hero">
-      <h1>Universal Agent Skills</h1>
-      <p>A production catalog of 46 modular capabilities for autonomous coding agents. Hand-crafted manifests, real test fixtures, and a zero-dependency CLI for Antigravity, Claude Code, Cursor, Codex, and Swarms.</p>
+      <!-- Background Draggable Stickers (Exact match to screenshot) -->
+      <img src="assets/stickers/blueberry.svg" class="bg-sticker stk-pos-1" alt="Blueberry Sticker" title="Drag me!">
+      <img src="assets/stickers/Eye Splat.svg" class="bg-sticker stk-pos-2" alt="Eye Splat Sticker" title="Drag me!">
+      <img src="assets/stickers/star.svg" class="bg-sticker stk-pos-3" alt="Purple Star Sticker" title="Drag me!">
+      <img src="assets/stickers/flower.svg" class="bg-sticker stk-pos-4" alt="Flower Sticker" title="Drag me!">
+      <img src="assets/stickers/cat.svg" class="bg-sticker stk-pos-5" alt="Cat Sticker" title="Drag me!">
+      <img src="assets/stickers/SparkleTrio.svg" class="bg-sticker stk-pos-6" alt="Sparkles Sticker" title="Drag me!">
 
-      <!-- Terminal Console -->
-      <div class="console">
-        <div class="console-bar">
-          <div class="console-tabs">
-            <button class="tab-btn active" onclick="setTab('npx')">NPX (Instant)</button>
-            <button class="tab-btn" onclick="setTab('npm')">NPM Global</button>
-            <button class="tab-btn" onclick="setTab('curl')">cURL</button>
-            <button class="tab-btn" onclick="setTab('ps')">PowerShell</button>
-          </div>
-          <span class="console-meta">46 skills available</span>
+      <!-- Headline with inline stickers (click to spin!) -->
+      <h1>
+        Give your AI agent
+        <span class="inline-sticker" onclick="spinSticker(this)"><img src="assets/stickers/Curious blue globe.svg" alt="globe"></span>
+        the kind of
+        <span class="inline-sticker" onclick="spinSticker(this)"><img src="assets/stickers/Flame.svg" alt="flame"></span>
+        skills that makes autonomy stick around.
+        <span class="inline-sticker" onclick="spinSticker(this)"><img src="assets/stickers/Peace-hand.svg" alt="peace"></span>
+      </h1>
+
+      <!-- Actions -->
+      <div class="hero-actions">
+        <div class="cmd-pill" onclick="copyHeroCmd()">
+          <code>npx @rawenergon/skills add sticker-craft</code>
+          <svg class="copy-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
         </div>
-        <div class="console-content">
-          <div class="console-cmd" id="cmdText">
-            <span class="cmd-prompt">$</span>npx @rawenergon/skills add sticker-craft
-          </div>
-          <button class="btn-copy-cmd" id="copyBtn" onclick="copyConsoleCmd()">Copy</button>
+
+        <a href="#catalog" class="btn-explore">
+          Explore skills ↗
+        </a>
+      </div>
+
+      <!-- Social Proof -->
+      <div class="social-proof">
+        <div class="avatar-stack">
+          <div class="avatar-face">🔴</div>
+          <div class="avatar-face">🟡</div>
+          <div class="avatar-face">🔵</div>
         </div>
+        <span>Equipping <strong>1,347</strong> developers & autonomous agents</span>
       </div>
     </section>
 
-    <!-- Sticker Craft Feature Section -->
-    <section>
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Sticker Craft & 3D Peel Physics</h2>
-          <p class="section-desc">Die-cut vinyl decal generation and interactive <code>usePeel</code> spring physics.</p>
-        </div>
-        <a href="https://github.com/rawenergon/skill/tree/main/skills/sticker-craft" target="_blank" class="nav-btn nav-btn-ghost">View Skill</a>
+    <!-- Skills Catalog Section -->
+    <section class="catalog-section" id="catalog">
+      <div class="catalog-header">
+        <h2 class="catalog-title">Explore Agent Skills</h2>
+        <p class="catalog-desc">46 production-ready skills for engineering, motion design, reversing, and swarms.</p>
       </div>
 
-      <div class="sticker-workbench">
-        <div class="sticker-gallery">
-          <div class="sticker-item">
-            <img src="assets/stickers/akatsuki-cloud.svg" alt="Akatsuki Cloud" class="sticker-asset">
-            <span class="sticker-label">akatsuki-cloud</span>
-          </div>
-          <div class="sticker-item">
-            <img src="assets/stickers/Cosmiceye.svg" alt="Cosmic Eye" class="sticker-asset">
-            <span class="sticker-label">cosmic-eye</span>
-          </div>
-          <div class="sticker-item">
-            <img src="assets/stickers/mochi-rocket.svg" alt="Mochi Rocket" class="sticker-asset">
-            <span class="sticker-label">mochi-rocket</span>
-          </div>
-          <div class="sticker-item">
-            <img src="assets/stickers/pink-cat.svg" alt="Pink Cat" class="sticker-asset">
-            <span class="sticker-label">pink-cat</span>
-          </div>
+      <div class="catalog-controls">
+        <div class="search-wrap">
+          <svg class="search-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="searchInput" class="search-box" placeholder="Search 46 skills by name or keyword... (Press '/' to focus)">
         </div>
 
-        <div class="sticker-info">
-          <h3>Interactive Decal Mechanics</h3>
-          <p>Hover any decal above to test the tactile vinyl peel transformation: 3D perspective tilt, elevation offset, and dynamic drop-shadow expansion.</p>
-          <div class="sticker-code">import { usePeel } from "./usePeel";
-
-const { style, onMouseEnter } = usePeel(true);
-return &lt;svg style={style} ... /&gt;;</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Directory -->
-    <section>
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Skills Directory</h2>
-          <p class="section-desc">Filter by engineering domain or search by keyword.</p>
+        <div class="category-pills" id="categoryPills">
+          <button class="cat-pill active" data-cat="all">All (46)</button>
+          <button class="cat-pill" data-cat="Frontend & Motion">Frontend & Motion (21)</button>
+          <button class="cat-pill" data-cat="Engineering & Reversing">Engineering & Reversing (4)</button>
+          <button class="cat-pill" data-cat="Swarms & Orchestration">Swarms & Orchestration (8)</button>
+          <button class="cat-pill" data-cat="Customizations & Plugins">Customizations & Plugins (6)</button>
+          <button class="cat-pill" data-cat="Architecture & Quality">Architecture & Quality (7)</button>
         </div>
       </div>
 
-      <div class="controls">
-        <input type="text" id="searchInput" class="search-input" placeholder="Search 46 skills by name or description... (Press '/' to focus)">
-        
-        <div class="filter-tabs" id="filterTabs">
-          <button class="filter-pill active" data-cat="all">All (46)</button>
-          <button class="filter-pill" data-cat="Frontend & Motion">Frontend & Motion (21)</button>
-          <button class="filter-pill" data-cat="Engineering & Reversing">Engineering & Reversing (4)</button>
-          <button class="filter-pill" data-cat="Swarms & Orchestration">Swarms & Orchestration (8)</button>
-          <button class="filter-pill" data-cat="Customizations & Plugins">Customizations & Plugins (6)</button>
-          <button class="filter-pill" data-cat="Architecture & Quality">Architecture & Quality (7)</button>
-        </div>
-      </div>
-
-      <div class="skills-list" id="skillsList"></div>
+      <div class="skills-grid" id="skillsGrid"></div>
     </section>
   </main>
 
@@ -734,9 +796,9 @@ return &lt;svg style={style} ... /&gt;;</div>
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
     <div class="modal" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <div class="modal-title-wrap">
-          <h2 id="modalTitle">Skill Name</h2>
-          <span id="modalCategory">Category</span>
+        <div>
+          <h2 class="modal-title" id="modalTitle">Skill Name</h2>
+          <span class="modal-meta" id="modalMeta">Category</span>
         </div>
         <button class="modal-close" onclick="closeModal()">×</button>
       </div>
@@ -744,12 +806,12 @@ return &lt;svg style={style} ... /&gt;;</div>
     </div>
   </div>
 
-  <div class="toast" id="toast">Copied command</div>
+  <div class="toast" id="toast">Copied command!</div>
 
   <footer>
-    <div class="container footer-inner">
-      <div>Universal AI Agent Skills · Maintained by <a href="https://github.com/rawenergon" target="_blank">@rawenergon</a> · MIT License</div>
-      <div>Compatible with <code>.gemini/skills</code> and <code>.agents/skills</code></div>
+    <div class="container">
+      <p>Universal AI Agent Skills Collection · Built by <a href="https://github.com/rawenergon" target="_blank">Aditya Raj (@rawenergon)</a> · MIT Licensed</p>
+      <p style="margin-top: 6px; font-size: 12.5px; color: #9ca3af;">CLI: <code>npx @rawenergon/skills</code> · Compatible with .gemini/skills & .agents/skills</p>
     </div>
   </footer>
 
@@ -759,37 +821,17 @@ return &lt;svg style={style} ... /&gt;;</div>
 
   <script>
     const skills = JSON.parse(document.getElementById('skills-data').textContent);
-    const list = document.getElementById('skillsList');
+    const grid = document.getElementById('skillsGrid');
     const searchInput = document.getElementById('searchInput');
-    const filterTabs = document.getElementById('filterTabs');
+    const categoryPills = document.getElementById('categoryPills');
     const toast = document.getElementById('toast');
-    const cmdText = document.getElementById('cmdText');
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modalTitle = document.getElementById('modalTitle');
-    const modalCategory = document.getElementById('modalCategory');
+    const modalMeta = document.getElementById('modalMeta');
     const modalBody = document.getElementById('modalBody');
 
     let currentCat = 'all';
     let searchQuery = '';
-
-    const tabMap = {
-      'npx': 'npx @rawenergon/skills add sticker-craft',
-      'npm': 'npm install -g @rawenergon/skills && skills add sticker-craft',
-      'curl': 'curl -fsSL https://raw.githubusercontent.com/rawenergon/skill/main/install.sh | bash -s sticker-craft',
-      'ps': 'irm https://raw.githubusercontent.com/rawenergon/skill/main/install.ps1 | iex -args sticker-craft'
-    };
-    let activeTab = 'npx';
-
-    function setTab(tab) {
-      activeTab = tab;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      cmdText.innerHTML = `<span class="cmd-prompt">$</span>${tabMap[tab]}`;
-    }
-
-    function copyConsoleCmd() {
-      copyText(tabMap[activeTab]);
-    }
 
     function render() {
       const filtered = skills.filter(s => {
@@ -800,32 +842,54 @@ return &lt;svg style={style} ... /&gt;;</div>
       });
 
       if (filtered.length === 0) {
-        list.innerHTML = `<div style="background: var(--surface); padding: 48px; text-align: center; color: var(--text-tertiary);">No matching skills found.</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px 0; color: #9ca3af;">
+          <h3>No matching skills found</h3>
+          <p style="margin-top: 8px;">Try searching for another keyword.</p>
+        </div>`;
         return;
       }
 
-      list.innerHTML = filtered.map(s => `
-        <div class="skill-row">
-          <div class="skill-ident">
-            <span class="skill-name" onclick="openDocs('${s.name}')">${s.name}</span>
-            <span class="skill-cat">${s.category}</span>
+      grid.innerHTML = filtered.map(s => `
+        <div class="skill-card">
+          <div>
+            <div class="card-top">
+              <span class="card-cat">${s.category}</span>
+              <span class="card-files">${s.fileCount} ${s.fileCount === 1 ? 'file' : 'files'}</span>
+            </div>
+            <h3 class="card-name">${s.name}</h3>
+            <p class="card-desc">${s.description}</p>
           </div>
-          <div class="skill-desc">${s.description}</div>
-          <div class="skill-files">${s.fileCount} ${s.fileCount === 1 ? 'file' : 'files'}</div>
-          <div class="skill-ops">
-            <button class="btn-act" onclick="copyText('npx @rawenergon/skills add ${s.name}')">Copy Install</button>
-            <button class="btn-act" onclick="openDocs('${s.name}')">Docs</button>
+          <div class="card-actions">
+            <button class="btn-card-copy" onclick="copyText('npx @rawenergon/skills add ${s.name}')">
+              <span>npx add ${s.name}</span>
+            </button>
+            <button class="btn-card-docs" onclick="openDocs('${s.name}')">
+              Docs
+            </button>
           </div>
         </div>
       `).join('');
     }
 
+    function copyHeroCmd() {
+      copyText('npx @rawenergon/skills add sticker-craft');
+    }
+
     function copyText(txt) {
       navigator.clipboard.writeText(txt).then(() => {
-        toast.textContent = `Copied: ${txt}`;
+        toast.textContent = `Copied: "${txt}"`;
         toast.style.display = 'block';
-        setTimeout(() => { toast.style.display = 'none'; }, 2000);
+        setTimeout(() => { toast.style.display = 'none'; }, 2200);
       });
+    }
+
+    function spinSticker(el) {
+      const curr = parseInt(el.getAttribute('data-turns') || '0', 10) + 1;
+      el.setAttribute('data-turns', curr);
+      el.style.transform = `rotate(${curr * 360}deg) scale(1.2)`;
+      setTimeout(() => {
+        el.style.transform = `rotate(${curr * 360}deg) scale(1)`;
+      }, 500);
     }
 
     function openDocs(name) {
@@ -833,18 +897,18 @@ return &lt;svg style={style} ... /&gt;;</div>
       if (!skill) return;
 
       modalTitle.textContent = skill.name;
-      modalCategory.textContent = `${skill.category} · ${skill.fileCount} files`;
+      modalMeta.textContent = `${skill.category} · ${skill.fileCount} files`;
 
       modalBody.innerHTML = `
         <div style="margin-bottom: 20px;">
-          <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); margin-bottom: 8px;">Install Command</h4>
+          <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 8px;">Install Command</h4>
           <pre><code>npx @rawenergon/skills add ${skill.name}</code></pre>
         </div>
         <div style="margin-bottom: 20px;">
-          <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); margin-bottom: 8px;">Files Manifest</h4>
+          <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 8px;">Files Included (${skill.fileCount})</h4>
           <pre><code>${skill.files.join('\n')}</code></pre>
         </div>
-        <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); margin-bottom: 8px;">SKILL.md Documentation</h4>
+        <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; margin-bottom: 8px;">Documentation (SKILL.md)</h4>
         <pre><code>${escapeHtml(skill.docs)}</code></pre>
       `;
 
@@ -861,6 +925,43 @@ return &lt;svg style={style} ... /&gt;;</div>
       return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
+    // Draggable Sticker Engine
+    document.querySelectorAll('.bg-sticker').forEach(stk => {
+      stk.addEventListener('mousedown', function(e) {
+        const el = this;
+        let isMoving = false;
+        let shiftX = e.clientX - el.getBoundingClientRect().left;
+        let shiftY = e.clientY - el.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+          el.style.position = 'fixed';
+          el.style.left = (pageX - shiftX) + 'px';
+          el.style.top = (pageY - shiftY) + 'px';
+          el.style.zIndex = '1000';
+          el.style.animation = 'none';
+        }
+
+        function onMouseMove(event) {
+          isMoving = true;
+          moveAt(event.clientX, event.clientY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        document.onmouseup = function() {
+          document.removeEventListener('mousemove', onMouseMove);
+          document.onmouseup = null;
+          if (isMoving) {
+            const randomRot = (Math.random() * 20 - 10).toFixed(1);
+            el.style.transform = `rotate(${randomRot}deg) scale(1.1)`;
+          }
+        };
+      });
+
+      stk.ondragstart = function() { return false; };
+    });
+
+    // Listeners
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
       render();
@@ -876,9 +977,9 @@ return &lt;svg style={style} ... /&gt;;</div>
       }
     });
 
-    filterTabs.addEventListener('click', (e) => {
-      if (e.target.classList.contains('filter-pill')) {
-        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    categoryPills.addEventListener('click', (e) => {
+      if (e.target.classList.contains('cat-pill')) {
+        document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
         e.target.classList.add('active');
         currentCat = e.target.dataset.cat;
         render();
